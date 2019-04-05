@@ -1,0 +1,9 @@
+#init
+GO111MODULE=on go mod init
+
+#update
+GO111MODULE=on go mod tidy
+
+
+# deploy
+gcloud functions deploy HorizonChannelSchedule --runtime go111 --trigger-http
