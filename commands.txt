@@ -9,3 +9,6 @@ GO111MODULE=on go mod tidy
 gcloud functions deploy HorizonChannelSchedule --runtime go111 --trigger-http
 
 gcloud functions deploy SetChannelsSchedule --runtime go111 --trigger-http
+
+
+cron.key=7e8fd88c6007dc4fc163a2b2b69f8f69007dd3f3

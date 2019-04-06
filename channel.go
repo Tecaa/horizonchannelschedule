@@ -8,7 +8,7 @@ type Channel struct {
 }
 
 type ChannelEntry struct {
-	Start       time.Time
-	End         time.Time
-	ProgramName string
+	Start       time.Time `json:"start"`
+	End         time.Time `json:"end"`
+	ProgramName string    `json:"programName"`
 }

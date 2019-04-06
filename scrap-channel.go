@@ -30,10 +30,14 @@ func ScrapChannel(w http.ResponseWriter, r *http.Request) {
 func SetChannelsSchedule(w http.ResponseWriter, r *http.Request) {
 	ctx := context.Background()
 
+	//Local
 	//opt := option.WithCredentialsFile("tv-chile-flutter-0474bef9a427.json")
 	//firebaseApp, err := firebase.NewApp(ctx, nil, opt)
+
+	//Firebase
 	conf := &firebase.Config{ProjectID: "tv-chile-flutter"}
 	firebaseApp, err := firebase.NewApp(ctx, conf)
+
 	if err != nil {
 		log.Fatal(err)
 		panic(fmt.Errorf("error initializing app: %v", err))
@@ -66,7 +70,7 @@ func SetChannelsSchedule(w http.ResponseWriter, r *http.Request) {
 		channelModel.Schedule.Today = GetScheduleFromTime(channelModel.ScheduleCloudFunction, currentTime)
 
 		tomorrowTime := currentTime.Add(time.Hour * 24)
-		channelModel.Schedule.Tommorrow = GetScheduleFromTime(channelModel.ScheduleCloudFunction, tomorrowTime)
+		channelModel.Schedule.Tomorrow = GetScheduleFromTime(channelModel.ScheduleCloudFunction, tomorrowTime)
 
 		yesterdayTime := currentTime.Add(time.Hour * -24)
 		channelModel.Schedule.Yesterday = GetScheduleFromTime(channelModel.ScheduleCloudFunction, yesterdayTime)
@@ -110,6 +114,7 @@ func HorizonChannelSchedule(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprint(w, "Not enough params")
 		return
 	}
+
 	channelIdParam := p[1]
 	dateParam := p[2]
 

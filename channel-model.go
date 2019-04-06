@@ -7,12 +7,12 @@ type ChannelModel struct {
 	Logo                  string
 	Url                   string
 	Thumbnail             string
-	Schedule              ChanelScheduleModel
+	Schedule              ChannelScheduleModel
 	ScheduleCloudFunction string
 }
 
-type ChanelScheduleModel struct {
-	Yesterday []ChannelEntry
-	Today     []ChannelEntry
-	Tommorrow []ChannelEntry
+type ChannelScheduleModel struct {
+	Yesterday []ChannelEntry `json:"yesterday"`
+	Today     []ChannelEntry `json:"today"`
+	Tomorrow  []ChannelEntry `json:"tomorrow"`
 }
